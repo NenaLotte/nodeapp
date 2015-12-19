@@ -1,0 +1,118 @@
+body {
+  height: 100%;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #d7f0ed;
+}
+
+.jumbotron {
+  background-image: url('/images/grand-canyon-hd-wallpaper.jpg');
+  color: white;
+  text-shadow: 1px 1px 3px #000;
+  background-repeat: no-repeat;
+  background-size:cover;
+}
+
+#introText {
+  background-color:rgba(0,0,0,0.5);
+  padding: 5px;
+}
+
+#introText p {
+  margin: 0px;
+}
+
+#quoteTable {
+  background-color: #606060;
+  color: white;
+  width: 100%;
+  margin-bottom: 15px;
+  border-spacing: 0;
+}
+
+td {
+  padding: 10px;
+}
+
+#quote {
+  border-bottom: 1px solid #ddd;
+  font: 20px "Cambria" italic, serif;
+  font-style: italic;
+}
+
+#author {
+  width: 20%;
+  border-right: 1px solid #ddd;
+  font: 17px "Cambria", serif;
+}
+
+#date {
+  width: 75%;
+  font: 16px "Cambria", serif;
+}
+
+#deleteQuote {
+  background-color: white;
+  text-align: center;
+  font-weight: bold;
+  padding: 0px;
+}
+
+.linkdeletequote {
+  background-color: red;
+  font-size: 1.5em;
+  margin-left: 10px;
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-bottom: 4px;
+  color: white;
+  vertical-align: middle;
+}
+
+.linkdeletequote:hover {
+  text-decoration: none;
+  color:inherit;
+}
+
+.button {
+  width: 60px;
+  height: 20px;
+  line-height: 20px;
+  background-color: red;
+  text-align: center;
+  vertical-align: middle;
+  color: white;
+  font-weight: bold;
+  border-radius: 7px;
+
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: #fd7403;
+}
+
+fieldset {
+  padding-bottom: 15px;
+}
+
+#inputQuote {
+  resize: none;
+  width: 100%;
+  height: 200px;
+  margin-right: 5px;
+  margin-bottom: 5px;
+}
+
+#inputAuthor {
+  margin-right: 5px;
+  margin-bottom: 5px;
+}
+
+#charCounter {
+  display:inline-block;
+  float: right;
+  color: #a1a1a1;
+}

@@ -1,0 +1,30 @@
+extends layout
+
+block content
+  .jumbotron
+    .container
+      h1= title
+      #introText
+        p Welcome to Quote saver! Here you can store your favorite quotes and retrieve them whenever you want, or you can view all stored quotes by users worldwide. Have fun!
+
+
+  .col-md-4
+    h2 Put in a new quote here
+
+    //Here will come the input field
+    #quoteInput
+      fieldset
+        textarea#inputQuote(placeholder='Your quote: max. 400 characters!', maxlength='400', spellcheck='true')
+        br
+        input#inputAuthor(type='text', placeholder='Who said it?')
+        input#inputDate(type='text', placeholder='When?')
+        p#charCounter
+
+    //Here will be the input button
+    #inputButton.button save
+
+  .col-md-8
+    h2 The quote database
+
+    //This is where the saved quotes will appear
+    #quoteList
