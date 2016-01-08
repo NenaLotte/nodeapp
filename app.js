@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-var expres = require('express');
-=======
 var expre = require('express');
->>>>>>> origin/Test
 var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
