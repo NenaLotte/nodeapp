@@ -11,7 +11,7 @@ block content
   .col-md-4
     h2 Put in a new quote here
 
-    //Here will come the input field
+    //The input field
     #quoteInput
       fieldset
         textarea#inputQuote(placeholder='Your quote: max. 400 characters!', maxlength='400', spellcheck='true')
@@ -20,8 +20,19 @@ block content
         input#inputDate(type='text', placeholder='When?')
         p#charCounter
 
-    //Here will be the input button
+    //The input button
     #inputButton.button save
+
+    //The search field
+    #searchField
+      h2 Looking for a certain someone?
+      input#quoteAuthor(type='text', placeholder='Who said it?')
+
+    //The search button
+    #searchAuthor.button search
+
+    //Reset button
+    #reset.button reset
 
   .col-md-8
     h2 The quote database

@@ -8,7 +8,7 @@ a {
 }
 
 .jumbotron {
-  background-image: url('/images/grand-canyon-hd-wallpaper.jpg');
+  background-image: url('../images/grand-canyon-hd-wallpaper.jpg');
   color: white;
   text-shadow: 1px 1px 3px #000;
   background-repeat: no-repeat;
@@ -72,6 +72,7 @@ td {
 }
 
 .linkdeletequote:hover {
+  background-color: #fd7403;
   text-decoration: none;
   color:inherit;
 }
@@ -115,4 +116,21 @@ fieldset {
   display:inline-block;
   float: right;
   color: #a1a1a1;
+}
+
+#quoteAuthor {
+  margin-bottom: 15px;
+}
+
+#reset {
+  display: inline-block;
+}
+
+#searchAuthor {
+  display: inline-block;
+  margin-right: 5px;
+}
+
+.col-md-8 h2 {
+  display: inline-block;
 }

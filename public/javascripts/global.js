@@ -9,14 +9,21 @@ var max = 400;
 //When the document is ready, fire up this function
 $(document).ready(function(){
 
-  //Add a date picker to the date entry field
-  $('#inputDate').datepicker();
+  //Add a date picker to the date entry field, which is restricted to
+  //dates from today and earlier (no future dates)
+  $('#inputDate').datepicker({maxDate: new Date});
 
   //Add an event handler for the save quote button
   $('#inputButton').on('click', addQuote);
 
   //Add an event handler for the delete quote buttons
   $('#quoteList').on('click', 'td a.linkdeletequote', deleteQuote);
+
+  //Add an event handler for searching author button
+  $('#searchAuthor').on('click', searchAuthor);
+
+  //Add an event handler for the reset button
+  $('#reset').on('click', showQuote);
 
   //Start the track character function
   trackChar();
@@ -79,7 +86,6 @@ function showQuote(){
         quoteContent += '</tr>';
         quoteContent += '</tbody>';
         quoteContent += '</table>';
-        //quoteContent += '<div id="deleteQuote"><a href="#" class="linkdeletequote" rel="' + this._id + '">x</a></div>'
       });
 
       //Putting the entire string into our index page
@@ -91,10 +97,10 @@ function showQuote(){
 //The function that adds the defined quote to the database
 function addQuote(){
 
-  //Validate whether the quote field is not empty. If it is, no
-  //quote can be added!
+  //Validate whether the quote field is not empty
   var errorCount = 0;
-  if ($('#inputQuote').val() === '') {
+
+  if ($('#inputQuote').val() === '' ) {
     errorCount++;
   }
 
@@ -189,4 +195,63 @@ function deleteQuote(event){
     //If the delete was pressed by accident and confirm was no
     return false;
   }
+};
+
+//The function that searches for a certain author
+function searchAuthor(){
+
+  //A variable to track if there are quotes Found
+  var found = 0;
+
+  //A variable to store the author in uppercase
+  var authorToCheck = $('#quoteAuthor').val().toUpperCase();
+
+  //A string variable to store the final html
+  var quoteContent = '';
+
+  //Emptying the text field
+  $('#quoteAuthor').val('');
+
+  //Retrieving the data from the database
+  $.getJSON('/quotes/quotelist', function(data){
+
+    //For each part of the data, start the checker
+    $.each(data, function(){
+
+      //Check whether the specified author exists in the database
+      if (this.author.toUpperCase() === authorToCheck ) {
+
+        //For each item, create a table row with the quote,
+        //and another row with the author and date of submission.
+
+        //Building up the table in small blocks
+        quoteContent += '<table id="quoteTable">';
+        quoteContent += '<tbody>';
+        quoteContent += '<tr>';
+        quoteContent += '<td colspan="2" id="quote">"' + this.quote + '"</td>';
+        quoteContent += '<td rowspan="2" id="deleteQuote"><a href="#" class="linkdeletequote" rel="' + this._id + '">x</a></td>';
+        quoteContent += '</tr>';
+        quoteContent += '<tr>';
+        quoteContent += '<td id="author">' + this.author + '</td>';
+        quoteContent += '<td id="date">' + this.date + '</td>';
+        quoteContent += '</tr>';
+        quoteContent += '</tbody>';
+        quoteContent += '</table>';
+
+        found = found+1;
+      }
+
+    });
+
+    //To check whether there are found authors or not
+    if (found === 0){
+
+      //If there are none, append a string of text
+      $('#quoteList').html('<p>Uh oh, this author does not exist yet!</p>');
+    } else {
+
+      //Putting the entire string into our index page
+      $('#quoteList').html(quoteContent);
+    }
+  });
 };
